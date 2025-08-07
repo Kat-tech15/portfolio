@@ -1,0 +1,32 @@
+.loginForm{
+    max-width: 250px;
+    height: 150px;
+    background-color: rgb(11, 93, 170);
+    margin: 0 auto;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(95, 223, 21, 0.1);
+
+}
+label{
+    color: deepskyblue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    
+}
+input{
+    border-radius: 5px;
+    background-color: white;
+    border: none;
+    margin: 5px;
+    text-align: left;
+}
+button{ 
+    background-color: rgb(190, 43, 171);
+    border-radius: 8px;
+    padding: 10px 15px;
+    border: none;
+}
+button:hover{
+    background-color: rgb(241, 7, 144);
+}

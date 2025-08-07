@@ -1,0 +1,83 @@
+/* skills.css - Skills page specific styles */
+.skills {
+    padding: 50px;
+    color: #374cc4;
+    text-align: center;
+    background: url(images/about3.jpg);
+}
+
+.skills h2 {
+    color: #25ee57;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 50px;
+    overflow: auto;
+    padding: 10px;
+}
+
+.skill {
+    background-color: rgb(51, 179, 79);
+    padding: 20px 25px;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    flex: 20px 20px 20px;
+    white-space: nowrap;
+    transition: transform 0.3s ease;
+}
+
+.skill:hover {
+    transform: scale(1.1)
+}
+
+.skills-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+    background-image: url(static/images/skills.jpg);
+}
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Hover Effect */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Styles */
+.card-icon {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+/* Card Header Styles */
+.card-header {
+    font-size: 24px;
+    color: #12db6c;
+    margin-bottom: 10px;
+}
+
+/* Description Styles */
+.card-description {
+    font-size: 17px;
+    color: #666;
+    line-height: 1.5;
+}

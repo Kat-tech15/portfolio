@@ -1,0 +1,102 @@
+/* contact.css - Contact page specific styles */
+.contact {
+    padding: 50px;
+    text-align: flex;
+    margin-top: 50px;
+}
+
+.contact h2 {
+    color: #0f2fe7;
+}
+
+.contact-container {
+    margin: 0 auto;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(95, 223, 21, 0.1);
+}
+
+.contact-container h1 {
+    margin-bottom: 20px;
+    background-color: #2e3e50;
+    border-radius: 20px;
+    padding: 20px 20px;
+    height: 250px;
+    width: 300px;
+}
+
+.contactForm {
+    height: 300px;
+    width: 50px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #367256;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 16px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 16px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 150px;
+}
+
+button:hover {
+    background-color: #3ad353;
+}
+
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    max-width: 300px;
+}
+
+.notification {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: white;
+    animation: slideIn 0.5s, fadeOut 0.5s 4.5s forwards;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.success {
+    background-color: #4CAF50;
+}
+
+.error {
+    background-color: #f44336;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
