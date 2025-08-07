@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 >Reply to: {{ message.full_name }} ({{ message.email }})</h2>
+<style>
+    button{
+        background-color: blue;
+        padding: 3px 5px;
+        border-radius: 10px;
+        border: none;
+    }
+    button:hover{
+        background-color: darkviolet;
+    }
+
+</style>
+<form method="post" >
+    {% csrf_token %}
+    <label for="reply">Your Reply:</label><br>
+    <textarea name="reply" rows="5" cols="60" required></textarea><br><br>
+    <button type="submit">Send Reply</button>
+</form><br>
+<a href="{% url 'view_messages' %}">Back to Messages</a>
+{% endblock %}

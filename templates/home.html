@@ -1,0 +1,160 @@
+{% extend 'base.html' %}
+{% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css' %}">
+{% endblock %}
+{% block content %}
+<section id="home" class="home">
+    <div class="hero-content">
+        <h2>Welcome to My Portfolio</h2>
+        <p class="hero-subtitle">Software Developer & UI/UX Designer</p>
+        <div class="hero-buttons">
+            <a href="{% url 'about' %}" class="cta-button">Learn More</a>
+            <a href="{% url 'contact' %}" class="cta-button secondary">Contact Me</a>
+        </div>
+    </div>
+</section>
+<section id="about" class="about">
+    <img src="{% static 'images/profile.jpeg' %}" alt="Profile Picture">
+    <div class="about-text">
+        <h2>About Me</h2>
+    
+        
+        <p>I am <span> Kelvin</span> Katwai <br> a <span>UI </span>/UX designer <br>and a Software <span> Developer</span></p>
+        <p>I am a passionate Software Developer skilled in <br> Python, JavaScript, Analytics, Database Management, and Networking. <br>I am passionate about technology and I am always eager to learn new discoveries.</p> 
+        <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" class="cv-btn" download>Download CV</a><br>
+    </div>
+</section>
+<section id="skills" class="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Vue.js</div>
+        <div class="skill">Python</div>
+        <div class="skill">SQL</div>
+    </div>
+</section>
+<section class="skills-section">
+    <div class="card">
+        <div class="card-icon">
+            <i class="fas fa-laptop-code"></i> <!-- Font Awesome Icon for programming -->
+        </div>
+        <div class="card-content">
+            <h3 class="card-header">Programming</h3>
+            <p class="card-description">
+                Proficiency in various programming languages such as Python, JavaScript, and C++. Continuous learning to stay updated with new frameworks and best practices.
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-icon">
+            <i class="fas fa-cloud"></i> <!-- Font Awesome Icon for cloud computing -->
+        </div>
+        <div class="card-content">
+            <h3 class="card-header">Cloud Computing</h3>
+            <p class="card-description">
+                Expertise in cloud platforms like AWS, Google Cloud, and Azure. Experience in deploying, managing, and scaling applications in the cloud environment.
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-icon">
+            <i class="fas fa-robot"></i> <!-- Font Awesome Icon for AI -->
+        </div>
+        <div class="card-content">
+            <h3 class="card-header">Artificial Intelligence</h3>
+            <p class="card-description">
+                Understanding of machine learning algorithms and AI technologies. Hands-on experience with training models and implementing AI solutions.
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-icon">
+            <i class="fas fa-database"></i> <!-- Font Awesome Icon for database -->
+        </div>
+        <div class="card-content">
+            <h3 class="card-header">Database Management</h3>
+            <p class="card-description">
+                Skilled in designing, managing, and querying relational databases such as MySQL and PostgreSQL. Knowledge of database normalization, indexing, and performance optimization.
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-icon">
+            <i class="fas fa-network-wired"></i> <!--Networking-->>
+        </div>
+        <div class="card-content">
+            <h3 class="card-header">Networking</h3>
+            <p class="card-description">
+                Knowledge of network protocols, IP addressing, subnetting, and network security. Practical experience with routers, switches, and LAN/WAN configurations.
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-icon">
+            <i class="fas fa-chart-line"></i> <!-- Data Analytics -->
+        </div>
+        <div class="card-content">
+            <h3 class="card-header">Data Analytics</h3>
+            <p class="card-description">
+                Competence in analyzing and interpreting data using tools like Excel, Python (Pandas, NumPy), and visualization libraries like Matplotlib and Power BI.
+            </p>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-icon">
+            <i class="fas fa-brain"></i> <!-- Data Science -->
+        </div>
+        <div class="card-content">
+            <h3 class="card-header">Data Science</h3>
+            <p class="card-description">
+                Experience in end-to-end data science workflows including data preprocessing, model building, evaluation, and deployment using Python and machine learning frameworks.
+            </p>
+        </div>
+    </div>
+</section>
+<section id="contact" class="contact">
+    <h1>Contact Me</h1>
+    <p>Feel free to reach for collaborations, job opportunities or any enquiries</p>
+    {% if messages %}
+    <div class="contact-container">
+        {% for message in messages %}
+        <div class="notification {% if message.tags %}{{ message.tags}}{% endif %}">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+            <div class="error-messages">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+            <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your Fullname" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your Email" required> 
+            </div>
+            <div class="input-group">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" rows="5" placeholder="Enter Message here..."></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+       
+        
+    </div>
+</section>
+        {% endblock %}

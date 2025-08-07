@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="about">
+    <img src="{% static 'images/profile.jpeg' %}" alt="Profile Picture">
+    <div class="about-text">
+        <h2>About Me</h2>
+    
+        
+        <p>I am <span> Kelvin</span> Katwai <br> a <span>UI </span>/UX designer <br>and a Software <span> Developer</span></p>
+        <p>I am a passionate Software Developer skilled in <br> Python, JavaScript, Analytics, Database Management, and Networking. <br>I am passionate about technology and I am always eager to learn new discoveries.</p> 
+        <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" class="cv-btn" download>Download CV</a><br>
+    </div>
+</section>
+{% endblock %}

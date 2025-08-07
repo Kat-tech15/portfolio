@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<section id="contact">
+    <h1>Contact Me</h1>
+    <p>Feel free to reach for collaborations, job opportunities or any enquiries</p>
+    {% if messages %}
+    <div class="contact-container">
+        {% for message in messages %}
+        <div class="notification {% if message.tags %}{{ message.tags}}{% endif %}">
+            <p>{{ message }}</p>
+        </div>
+        {% endfor %}
+            <div class="error-messages">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+            <form method="POST">
+            {% csrf_token %}
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your Fullname" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your Email" required> 
+            </div>
+            <div class="input-group">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" rows="5" placeholder="Enter Message here..."></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+       
+        
+    </div>
+</section>
+{% endblock %}

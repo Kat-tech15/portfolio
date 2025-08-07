@@ -1,0 +1,23 @@
+<!-- templates/admin_login.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/admin_login.css' %}">
+{% endblock %}
+
+{% block content %}
+<h2>Admin Login</h2>
+<form  method="post" action="{% url 'admin_login' %}">
+    {% csrf_token %}
+    <div class="loginForm">
+    <label >Username:</label>
+    <input type="text" name="username" placeholder="Enter username" required>
+    <label>Password:</label>
+    <input type="password" name="password" id="password" placeholder="Enter your password" required><br><br>
+    
+    <button type="submit">Login</button>
+    </div>
+    
+</form>
+{% endblock %}

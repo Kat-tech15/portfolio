@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+.table-container {
+  max-width: 1000px;
+  margin: 100px auto;
+  padding: 30px;
+  margin-top: 150px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.table-container h5 {
+  font-size: medium;
+  margin-bottom: 30px;
+  font-family: sans-serif;
+  color: aqua;
+}
+
+.table-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px 10px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+.table th {
+  background-color: #f5f5f5;
+  font-weight: 600;
+  color: #333;
+}
+
+.table tr:hover {
+  background-color: #f9f9f9;
+}
+    .actions{
+        display: flex;
+        gap: 10px;
+    }
+    .actions form {
+        display: inline;
+    }
+    .btn-1 {
+        background-color: #f51505;
+        padding: 3px 5px;
+        color: white;
+        border-radius: 5px;
+        border: none;
+    }
+    .btn-1:hover {
+        background-color: #cc0909;
+    }
+    .btn-2 {
+    background-color: #007bff;
+        padding: 3px 5px;
+        color: white;
+        border-radius: 5px;
+        border: none;
+    } 
+    .btn-2:hover{
+    background-color: #14a1ff;
+    }
+    .alert-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+  }
+  .alert {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    width: 80%;
+    text-align: center;
+  }
+
+  </style>
+  <div class="table-container">
+    <h5>Messages</h5>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Submitted at</th>
+                <th>Viewed</th>
+                <th>Replied</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for message in messages %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ message.full_name }}</td>
+                <td>{{ message.email }}</td>
+                <td>{{ message.message }}</td>
+                <td>{{ message.submitted_at|date:"Y-m-d H:i" }}</td>
+                <td>{{ message.viewed }}</td>
+                <td>{{ message.replied }}</td>
+                <td> 
+
+                    
+                    <form method="post" action="{% url 'delete_message' message.id %}">
+                        {% csrf_token %}
+                    <button class="btn-1" type="submit">Delete</button>
+                    </form><br>
+
+                    {% csrf_token %}
+                    <form method="post" action="{% url 'mark_viewed' message.id %}"></form>
+                    {% csrf_token %}
+                    <button class="btn-2" type="submit">view</button><br><br>
+    
+                    <a href="{% url 'reply_messages' message.id %}">Reply</a>
+                </td>
+            </tr>
+            
+            {% empty %}
+            <tr>
+                <td colspan="8" class="text-center">No messages yet.</td>
+            </tr>
+            {% endfor %}
+
+            
+        </tbody>
+    </table>
+  </div>
+{% endblock %}
