@@ -1,32 +1,46 @@
-.loginForm{
-    max-width: 250px;
-    height: 150px;
-    background-color: rgb(11, 93, 170);
+    .login-container{
+    max-width: 350px;
+    width: 100%;
+    background-color: white;
     margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
     padding: 20px 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(95, 223, 21, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
 }
-label{
-    color: deepskyblue;
-    font-family: Arial, Helvetica, sans-serif;
+.login-container h3 {
+    color: aqua;
+    font-family: sans-serif;
+    font-style: oblique;
+}
+.login-container label{
+    font-family: sans-serif;
     font-weight: 100;
+    color: cadetblue;
     
 }
-input{
+.login-container input {
+    width: 100%;
+    margin: 10px auto;
+    border: 1px solid #70ade6;
     border-radius: 5px;
-    background-color: white;
-    border: none;
-    margin: 5px;
-    text-align: left;
+    padding: 10px 0;
+    outline: none;
+    text-align: center;
+
 }
+
 button{ 
-    background-color: rgb(190, 43, 171);
-    border-radius: 8px;
+    background-color: #ee3ba4;
+    border-radius: 5px;
     padding: 10px 15px;
+    color: white;
     border: none;
+    width: 100%;
 }
 button:hover{
-    background-color: rgb(241, 7, 144);
+    background-color: #be2bab;
 }

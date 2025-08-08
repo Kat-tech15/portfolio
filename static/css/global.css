@@ -1,0 +1,214 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
+
+.about-container {
+    text-align: center;
+}
+.about-container h3 {
+    color: aqua;
+    font-style: oblique;
+    text-align: center;
+}
+.about-container img {
+    border-radius: 60%;
+    width: 250px;
+    height: 250px;
+    opacity: initial;
+    outline: none;
+    border: 2px solid #007bff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+}
+.about-text  p {
+    font-weight: 1.5em;
+    font-size: medium;
+    font-family: sans-serif;
+}
+
+.about-text span {
+    color: #fc0cc0;
+}
+
+.about-text h2 {
+    color: #007bff;
+}
+
+.cv-btn {
+    background-color: #1dca22;
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.cv-btn:hover {
+    background-color: #23a82a;
+}
+.skills {
+    padding: 50px;
+    color: #374cc4;
+    text-align: center;
+    background: url(images/about3.jpg);
+}
+
+.skills h2 {
+    color: #25ee57;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 50px;
+    overflow: auto;
+    padding: 10px;
+}
+
+.skill {
+    background-color: rgb(51, 179, 79);
+    padding: 20px 25px;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    flex: 20px 20px 20px;
+    white-space: nowrap;
+    transition: transform 0.3s ease;
+}
+
+.skill:hover {
+    transform: scale(1.1)
+}
+
+.skills-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+    background-image: url(static/images/skills.jpg);
+}
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Hover Effect */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Styles */
+.card-icon {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+/* Card Header Styles */
+.card-header {
+    font-size: 24px;
+    color: #12db6c;
+    margin-bottom: 10px;
+}
+
+/* Description Styles */
+.card-description {
+    font-size: 17px;
+    color: #666;
+    line-height: 1.5;
+}
+.contact-container {
+    margin: 50px auto;
+    padding: 20px 20px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    max-width: 400px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.contact-container p {
+    font-style: oblique;
+    color: cadetblue;
+}
+.contact-container h3 {
+    color: aqua;
+    font-family: sans-serif;
+    font-style: oblique;
+}
+.contact-container label {
+    font-weight: 100px;
+    font-family: sans-serif;
+    color: cadetblue;
+}
+
+.contact-container input,
+.contact-container textarea {
+    width: 100%;
+    padding: 10px 0;
+    border: 1px solid #70ade6;
+    border-radius: 5px;
+    margin: 10px auto;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #3ad353;
+}
+
+.notification-container {
+    position: fixed;
+    width: 100%;
+}
+
+.notification {
+    padding: 5px 3px;
+    border-radius: 5px;
+    color: white;
+    animation: slideIn 0.5s, fadeOut 0.5s 4.5s forwards;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.success {
+    background-color: #4CAF50;
+}
+
+.error {
+    background-color: #f44336;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}

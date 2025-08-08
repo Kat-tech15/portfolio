@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    background-color: #4c4b7a;
+    background-color: aliceblue;
     padding: 4px;
 }
 
@@ -38,15 +38,6 @@ nav ul li a {
 
 nav ul li a:hover {
     color: #2d44c4be;
-}
-
-img {
-    width: 300px;
-    height: 300px;
-    border-radius: 60%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-top: 20px;
-    opacity: initial;
 }
 footer {
     color: white;
@@ -92,6 +83,6 @@ footer {
 
 .par {
     font-size: 14px;
-    color: green ;
+    color: white;
     font-weight: bold;
 }
