@@ -1,24 +1,5 @@
 /* base.css - Global styles */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css");
-
-html {
-    scroll-behavior: smooth;
-}
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-header {
-    background-color: aliceblue;
-    padding: 4px;
-}
-
-header h1 {
-    color: #23a143;
-}
-
 nav ul {
     list-style: none;
     padding: 0px;
