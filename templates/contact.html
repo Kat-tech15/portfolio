@@ -1,16 +1,11 @@
 {% extends "base.html" %}
-{% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/contact.css' %}">
-{% endblock %}
 
 {% block content %}
-<section id="contact">
-    <h1>Contact Me</h1>
+<div class="contact-container">
+    <h3>Contact Me</h3>
     <p>Feel free to reach for collaborations, job opportunities or any enquiries</p>
     {% if messages %}
-    <div class="contact-container">
         {% for message in messages %}
         <div class="notification {% if message.tags %}{{ message.tags}}{% endif %}">
             <p>{{ message }}</p>
@@ -27,25 +22,106 @@
                 {% endfor %}
             </div>
         {% endif %}
-        
             <form method="POST">
             {% csrf_token %}
-            <div class="input-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your Fullname" required>
-            </div>
-            <div class="input-group">
+            
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your Email" required> 
-            </div>
-            <div class="input-group">
+            
                 <label for="message">Message</label>
                 <textarea name="message" id="message" rows="5" placeholder="Enter Message here..."></textarea>
-            </div>
+            
             <button type="submit">Submit</button>
         </form>
-       
-        
-    </div>
-</section>
+</div>
+    
+
+<style>
+    /* contact.css - Contact page specific styles */
+.contact-container {
+    margin: 50px auto;
+    padding: 20px 20px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    max-width: 400px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.contact-container p {
+    font-style: oblique;
+    color: cadetblue;
+}
+.contact-container h3 {
+    color: aqua;
+    font-family: sans-serif;
+    font-style: oblique;
+}
+.contact-container label {
+    font-weight: 100px;
+    font-family: sans-serif;
+    color: cadetblue;
+}
+
+.contact-container input,
+.contact-container textarea {
+    width: 100%;
+    padding: 10px 0;
+    border: 1px solid #70ade6;
+    border-radius: 5px;
+    margin: 10px auto;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #3ad353;
+}
+
+.notification-container {
+    position: fixed;
+    width: 100%;
+}
+
+.notification {
+    padding: 5px 3px;
+    border-radius: 5px;
+    color: white;
+    animation: slideIn 0.5s, fadeOut 0.5s 4.5s forwards;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.success {
+    background-color: #4CAF50;
+}
+
+.error {
+    background-color: #f44336;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+</style>
 {% endblock %}

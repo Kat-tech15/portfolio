@@ -7,45 +7,24 @@
     <title>{% block title %}Kelvin Katwai - Portfolio{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    {% block extra_css %}{% endblock %}
 </head>
-<body style="background-color: rgba(0, 0, 255, 0.548);">
+<body>
     <header>
-        <h1>KEL<span style="color: rgba(241, 21, 21, 0.884);">VIN  KAT</span>WAI</h1>
+        <h1>KEL<span style="color: #f11515e1;">VIN  KAT</span>WAI</h1>
         <nav>
             <ul class="nav-links">
-                
-                <li><a href="{% url 'home' %}" >Home</a></li>
-                <li><a href="{% url 'about' %} ">About</a></li>
-                <li><a href="{% url 'skills' %}" >Skills</a></li>
-                <li><a href="{% url 'contact' %}" >Contact</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills" >Skills</a></li>
+                <li><a href="#contact" >Contact</a></li>
+                {% if user.is_superuser %}
                 <li><a href="{% url 'admin_login' %}">Admin</a></li>
+                {% endif %}
             </ul>
         </nav>
     </header>
-
-    <main>
-        {% block content %}
-       <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-       </ul>
-        <!-- Default home content that shows when no child template overrides this block -->
-        <section id="home-hero" class="hero-section">
-            <div class="hero-content">
-                <h2>Welcome to My Portfolio</h2>
-                <p class="hero-subtitle">Software Developer & UI/UX Designer</p>
-                <div class="hero-buttons">
-                    <a href="{% url 'about' %}" class="cta-button">Learn More</a>
-                    <a href="{% url 'contact' %}" class="cta-button secondary">Contact Me</a>
-                </div>
-            </div>
-    
-        </section>
-        {% endblock %}
-    </main>
-
+    {% block content %}
+    {% endblock %} 
     <footer>
         <div class="footer-container">
             <div class="footer-icons">
@@ -56,15 +35,12 @@
                 <a href="https://www.instagram.com/katwaikelvin" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
             </div>
             <div class="footer-links">
-                <a href="{% url 'about' %}">About</a>
-                <a href="{% url 'skills' %}">Skills</a>
-                <a href="{% url 'contact' %}">Contact</a>
-                <a href="{% url 'admin_login' %}">Admin</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
             </div>
-            <p class="par">&copy; 2025 Kelvin Katwai. All Rights Reserved.</p>
+            <p>&copy; 2025 Kelvin Katwai. All Rights Reserved.</p>
         </div>
-    </footer>
-
-    
+    </footer> 
 </body>
 </html>

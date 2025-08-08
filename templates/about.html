@@ -1,20 +1,59 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/about.css' %}">
-{% endblock %}
-
 {% block content %}
-<section id="about">
+<div class="about-container">
     <img src="{% static 'images/profile.jpeg' %}" alt="Profile Picture">
     <div class="about-text">
-        <h2>About Me</h2>
-    
-        
+        <h3>About Me</h3>
         <p>I am <span> Kelvin</span> Katwai <br> a <span>UI </span>/UX designer <br>and a Software <span> Developer</span></p>
         <p>I am a passionate Software Developer skilled in <br> Python, JavaScript, Analytics, Database Management, and Networking. <br>I am passionate about technology and I am always eager to learn new discoveries.</p> 
         <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" class="cv-btn" download>Download CV</a><br>
     </div>
-</section>
+</div>
+    
+<style>
+.about-container {
+    text-align: center;
+}
+.about-container h3 {
+    color: aqua;
+    font-style: oblique;
+    text-align: center;
+}
+.about-container img {
+    border-radius: 60%;
+    outline: none;
+    border: 2px solid #007bff;
+
+}
+.about-text  p {
+    font-weight: 1.5em;
+    font-size: medium;
+    font-family: sans-serif;
+}
+
+.about-text span {
+    color: #fc0cc0;
+}
+
+.about-text h2 {
+    color: #007bff;
+}
+
+.cv-btn {
+    background-color: #1dca22;
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.cv-btn:hover {
+    background-color: #23a82a;
+}
+</style>
 {% endblock %}
