@@ -10,7 +10,7 @@ from .forms import ContactForm, ReplyForm
 # Create your views here.
 
 def home(request):
-    return render(request, 'base.html')
+    return render(request, 'home.html')
 
 def about(request):
     context = {}
