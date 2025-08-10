@@ -2,10 +2,18 @@ body {
     background: #f8f9fa
 }
 header {
-    background: cornflowerblue;    
+    background: cornflowerblue;  
+    text-align: center; 
+    position: fixed; 
 }
 .nav-links li {
     list-style: none;
+}
+.nav-links li a {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
 }
 #backToTopBtn {
     display: none;
