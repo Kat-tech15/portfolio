@@ -1,23 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2 >Reply to: {{ message.full_name }} ({{ message.email }})</h2>
+<div class="reply-container">
+    <h4>Reply to: {{ message.full_name }} ({{ message.email }})</h4>
+    <form method="post" >
+        {% csrf_token %}
+        <label for="reply">Your Reply:</label><br>
+        <textarea name="reply" rows="4" cols="60" required></textarea><br><br>
+        <button type="submit">Send Reply</button>
+    </form><br>
+    <a href="{% url 'view_messages' %}" class="back-btn">Back to Messages</a>
+</div>
 <style>
-    button{
-        background-color: blue;
-        padding: 3px 5px;
-        border-radius: 10px;
+    .reply-container {
+        background-color: #f1f1f2;
+        text-align: center;
+        margin: 50px auto;
+        padding: 10px 20px;
+        max-width: 600px;
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .reply-container h4 {
+        color: cadetblue;
+        font-style: oblique;
+    }
+    .reply-container textarea {
+        outline: none;
+        width: 100%;
+        border-radius: 5px;
+        border: 1px solid #0071b0;
+    }
+    .reply-container button {
         border: none;
+        background-color: #059ff1;
+        border-radius: 5px;
+        padding: 10px;
+        color: white;
     }
-    button:hover{
-        background-color: darkviolet;
+    .reply-container button:hover {
+        background-color: #1691d3;
     }
-
+    .back-btn {
+        border: none;
+        background-color: #059ff1;
+        border-radius: 5px;
+        padding: 10px;
+        color: white;
+        text-decoration: none;
+        
+    }
+    .back-btn:hover {
+        background-color: #1691d3;
+    }
+    
 </style>
-<form method="post" >
-    {% csrf_token %}
-    <label for="reply">Your Reply:</label><br>
-    <textarea name="reply" rows="5" cols="60" required></textarea><br><br>
-    <button type="submit">Send Reply</button>
-</form><br>
-<a href="{% url 'view_messages' %}">Back to Messages</a>
 {% endblock %}

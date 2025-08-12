@@ -16,6 +16,8 @@
   font-size: medium;
   margin-bottom: 30px;
   font-family: sans-serif;
+  font-style: oblique;
+  text-align: center;
   color: aqua;
 }
 
@@ -40,47 +42,54 @@
 .table tr:hover {
   background-color: #f9f9f9;
 }
-    .actions{
-        display: flex;
-        gap: 10px;
-    }
-    .actions form {
-        display: inline;
-    }
-    .btn-1 {
-        background-color: #f51505;
-        padding: 3px 5px;
-        color: white;
-        border-radius: 5px;
-        border: none;
-    }
-    .btn-1:hover {
-        background-color: #cc0909;
-    }
-    .btn-2 {
-    background-color: #007bff;
-        padding: 3px 5px;
-        color: white;
-        border-radius: 5px;
-        border: none;
-    } 
-    .btn-2:hover{
-    background-color: #14a1ff;
-    }
-    .alert-container{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-  }
-  .alert {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    width: 80%;
-    text-align: center;
-  }
+.actions{
+  display: flex;
+  gap: 10px;
+}
+.actions form {
+  display: inline;
+}
+.btn-1 {
+  background-color: #f51505;
+  padding: 3px 5px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+.btn-1:hover {
+  background-color: #cc0909;
+}
+.btn-2 {
+  background-color: #007bff;
+  padding: 3px 5px;
+  color: white;
+  border-radius: 5px;
+  border: none;
+} 
+.btn-2:hover{
+  background-color: #14a1ff;
+}
+.reply-btn {
+  color: white;
+  background-color: darkorchid;
+  border-radius: 5px;
+  padding: 5px 3px;
+  text-decoration: none;
+}
+.alert-container{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.alert {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  width: 80%;
+  text-align: center;
+}
 
   </style>
   <div class="table-container">
@@ -88,7 +97,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Index</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Message</th>
@@ -114,14 +123,14 @@
                     <form method="post" action="{% url 'delete_message' message.id %}">
                         {% csrf_token %}
                     <button class="btn-1" type="submit">Delete</button>
-                    </form><br>
+                    </form>
 
                     {% csrf_token %}
                     <form method="post" action="{% url 'mark_viewed' message.id %}"></form>
                     {% csrf_token %}
-                    <button class="btn-2" type="submit">view</button><br><br>
+                    <button class="btn-2" type="submit" onclick="return viewed">view</button><br><br>
     
-                    <a href="{% url 'reply_messages' message.id %}">Reply</a>
+                    <a href="{% url 'reply_messages' message.id %}" class="reply-btn">Reply</a>
                 </td>
             </tr>
             

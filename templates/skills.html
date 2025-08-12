@@ -17,7 +17,7 @@
             <div class="skill">SQL</div>
         </div>
     </section>
-    <section class="skills-section">
+    <section class="skills">
         <div class="card">
           <div class="card-icon">
             <i class="fas fa-laptop-code"></i> <!-- Font Awesome Icon for programming -->
@@ -103,13 +103,6 @@
         </div>
       </section>
 <style>
-  /* skills.css - Skills page specific styles */
-.skills {
-    padding: 50px;
-    color: #374cc4;
-    text-align: center;
-    background: url(images/about3.jpg);
-}
 
 .skills h2 {
     color: #25ee57;
@@ -140,16 +133,17 @@
     transform: scale(1.1)
 }
 
-.skills-section {
+.skills {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 20px;
     padding: 40px;
-    background-image: url(static/images/skills.jpg);
+    background: url("{% static 'images/skills.jpg' %}") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
-/* Card Styles */
 .card {
     background-color: white;
     border-radius: 10px;
