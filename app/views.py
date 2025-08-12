@@ -43,6 +43,7 @@ def is_superuser(user):
 @login_required
 @user_passes_test(is_superuser)
 def view_messages(request):
+    
     messages = ContactMessage.objects.all().order_by('-id')
     return render(request, 'view_messages.html', {'messages': messages})
 
@@ -58,7 +59,7 @@ def admin_login(request):
             return render(request,'view_messages.html',{'messages': ContactMessage.objects.all().order_by('-id')})
         else:
             messages.error(request, "Access denied. Only Admins can login.")
-            return redirect(request, 'admin-login')
+            return redirect( 'admin_login')
         
     return render(request, 'admin_login.html')
 
