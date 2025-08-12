@@ -2,10 +2,6 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/admin_login.css' %}">
-{% endblock %}
-
 {% block content %}
 <div class="login-container">
     <h3>Admin Login</h3>
@@ -18,4 +14,52 @@
         <button type="submit">Login</button>
     </form>
 </div>
+<style>
+        .login-container{
+    max-width: 350px;
+    width: 100%;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: center;
+    padding: 20px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+}
+.login-container h3 {
+    color: aqua;
+    font-family: sans-serif;
+    font-style: oblique;
+}
+.login-container label{
+    font-family: sans-serif;
+    font-weight: 100;
+    color: cadetblue;
+    
+}
+.login-container input {
+    width: 100%;
+    margin: 10px auto;
+    border: 1px solid #70ade6;
+    border-radius: 5px;
+    padding: 10px 0;
+    outline: none;
+    text-align: center;
+
+}
+
+button{ 
+    background-color: #ee3ba4;
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: white;
+    border: none;
+    width: 100%;
+}
+button:hover{
+    background-color: #be2bab;
+}
+</style>
 {% endblock %}

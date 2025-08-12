@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Kelvin Katwai - Portfolio{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/global.css' %}">
-    {% block extra_css %}{% endblock %}
 
 </head>
 <body>
@@ -18,9 +16,8 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills" >Skills</a></li>
                 <li><a href="#contact" >Contact</a></li>
-                {% if user.is_superuser %}
                 <li><a href="{% url 'admin_login' %}">Admin</a></li>
-                {% endif %}
+                
             </ul>
         </nav>
         <div class="back-to-top">
@@ -60,5 +57,123 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 </script>
+<style>
+    body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #fdfdfd;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: whitesmoke;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0%;
+    height: 2px;
+    background: #f11515e1;
+    transition: 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
+}
+
+#backToTopBtn {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background: #08e91be1;
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: block; /* Always visible */
+}
+
+#backToTopBtn:hover {
+    background: #08d30ee1;
+    transform: scale(1.1);
+}
+
+footer {
+    background: #111;
+    color: #eee;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.footer-icons a {
+    color: #eee;
+    margin: 0 10px;
+    font-size: 1.3rem;
+    transition: 0.3s ease;
+}
+
+.footer-icons a:hover {
+    color: #f11515e1;
+}
+
+.footer-links {
+    margin: 1rem 0;
+}
+
+.footer-links a {
+    color: #eee;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #f11515e1;
+}
+</style>
 </body>
 </html>

@@ -3,9 +3,6 @@
 
 {% load static %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}?v=2">
-{% endblock %}
 
 {% block content %}
 <section class="home" id="home" >
@@ -159,5 +156,293 @@
         </form>
 </div>
 </section>
+<style>
+    .home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 8%;
+    background: linear-gradient(135deg, #1e293b, #334155);
+    color: #fff;
+    text-align: center;
+}
 
+.hero-content {
+    max-width: 800px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.hero-content h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #cbd5e1;
+}
+
+.hero-content img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.hero-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.cta-button {
+    background: #f97316;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background: #ea580c;
+    transform: translateY(-3px);
+}
+
+.cta-button.secondary {
+    background: #64748b;
+}
+
+.cta-button.secondary:hover {
+    background: #475569;
+}
+
+/* ===== About Section ===== */
+.about {
+    background: #f8fafc;
+    padding: 4rem 8% 6rem 8%;
+    position: relative;
+    clip-path: ellipse(100% 100% at 50% 100%);
+}
+
+.about-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+}
+
+.about-text {
+    flex: 1 1 50%;
+}
+
+.about-text h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #475569;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.cv-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.cv-btn:hover {
+    background: #1e40af;
+}
+
+.about-container::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23f8fafc' d='M0,0L80,10C160,20,320,40,480,50C640,60,800,60,960,50C1120,40,1280,20,1360,10L1440,0V150H0Z'/%3E%3C/svg%3E") no-repeat;
+    background-size: cover;
+}
+.skills {
+    padding: 50px;
+    color: #374cc4;
+    text-align: center;
+    background: url(images/about3.jpg);
+}
+
+.skills h2 {
+    color: #25ee57;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 50px;
+    overflow: auto;
+    padding: 10px;
+}
+
+.skill {
+    background-color: rgb(51, 179, 79);
+    padding: 20px 25px;
+    border-radius: 10px;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    flex: 20px 20px 20px;
+    white-space: nowrap;
+    transition: transform 0.3s ease;
+}
+
+.skill:hover {
+    transform: scale(1.1)
+}
+
+.skills-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 40px;
+    background-image: url(static/images/skills.jpg);
+}
+
+/* Card Styles */
+.card {
+    background-color: white;
+    border-radius: 10px;
+    width: 280px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Card Hover Effect */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon Styles */
+.card-icon {
+    font-size: 50px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+/* Card Header Styles */
+.card-header {
+    font-size: 24px;
+    color: #12db6c;
+    margin-bottom: 10px;
+}
+
+/* Description Styles */
+.card-description {
+    font-size: 17px;
+    color: #666;
+    line-height: 1.5;
+}
+.contact-container {
+    margin: 50px auto;
+    padding: 20px 20px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    max-width: 400px;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.contact-container p {
+    font-style: oblique;
+    color: cadetblue;
+}
+.contact-container h3 {
+    color: aqua;
+    font-family: sans-serif;
+    font-style: oblique;
+}
+.contact-container label {
+    font-weight: 100px;
+    font-family: sans-serif;
+    color: cadetblue;
+}
+
+.contact-container input,
+.contact-container textarea {
+    width: 100%;
+    padding: 10px 0;
+    border: 1px solid #70ade6;
+    border-radius: 5px;
+    margin: 10px auto;
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+
+
+button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #3ad353;
+}
+
+.notification-container {
+    position: fixed;
+    width: 100%;
+}
+
+.notification {
+    padding: 5px 3px;
+    border-radius: 5px;
+    color: white;
+    animation: slideIn 0.5s, fadeOut 0.5s 4.5s forwards;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.success {
+    background-color: #4CAF50;
+}
+
+.error {
+    background-color: #f44336;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+</style>
 {% endblock %}
