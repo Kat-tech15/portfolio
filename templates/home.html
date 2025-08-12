@@ -4,30 +4,32 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/home.css' %}?v=2">
 {% endblock %}
 
 {% block content %}
 <section class="home" id="home" >
     <div class="hero-content">
         <h3>Welcome to My Portfolio</h3>
-        <p class="hero-subtitle">Software Developer & UI/UX Designer</p>
+
+        <p>Software Developer, Data Analyst & UI/UX Designer</p>
+        <img src="{% static 'images/profile.jpeg' %}" alt="Profile Picture">
+
     <div class="hero-buttons">
         <a href="#about" class="cta-button">Learn More</a>
         <a href="#contact" class="cta-button secondary">Contact Me</a>
-    </div>            
-            
-        
+    </div>
+
     </div>
 </section>
 <section class="about" id="about" >
 <div class="about-container">
     <div class="about-text">
         <h3>About Me</h3>
-        <p>I am <span> Kelvin</span> Katwai <br> a <span>UI </span>/UX designer <br>and a Software <span> Developer</span></p>
-        <p>I am a passionate Software Developer skilled in <br> Python, JavaScript, Analytics, Database Management, and Networking. <br>I am passionate about technology and I am always eager to learn new discoveries.</p> 
+        <p>I am a Final year student at Pwani University pursuing a bachelor's degree in Telecommunication and Information Technology.
+        I am passionate about technology and I am always eager to learn new discoveries. Currently am working on perfecting my skills in backend development using Django. I posses strong skills in data  analysis using python's frameworks such as NumPy, pandas and Matplotlib.
+        </p>
         <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" class="cv-btn" download>Download CV</a><br><br>
-        <img src="{% static 'images/profile.jpeg' %}" alt="Profile Picture">
     </div>
 </div>
 </section>
