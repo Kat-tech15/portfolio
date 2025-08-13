@@ -4,7 +4,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login
 from .models import Message
-from .forms import ReplyForm
+from .forms import ReplyForm,MessageForm
 from django.conf import settings
 
 def is_superuser(user):
@@ -12,25 +12,24 @@ def is_superuser(user):
 
 
 def home(request):
-    return render(request, 'home.html')
-
-def contact(request):
     if request.method == 'POST':
         full_name = request.POST.get('name')
         email = request.POST.get('email')
         message_text = request.POST.get('message')
 
-        Message.objects.create(
-            full_name=full_name,
-            email=email,
-            message=message_text,
-        )
-        messages.success(request, 'Your message has been sent successfully!')
-        return redirect('contact')
+        if full_name and email and message_text:
+            Message.objects.create(
+                full_name=full_name,
+                email=email,
+                message=message_text,
+            )
+            messages.success(request, 'Your message has been sent successfully!')
+        else:
+            messages.error(request, 'Please fill in all fields before submitting.')
 
-    return render(request, 'contact.html')
+        return redirect('home')  # reload home page after form submission
 
-
+    return render(request, 'home.html')
 def admin_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -86,13 +85,19 @@ def view_message_detail(request, message_id):
         'message': message,
         'form': form
     })
+
 @login_required
 @user_passes_test(is_superuser)
 def view_notification(request):
-    messages = Message.objects.filter(viewed=False).order_by('-created_at')
-    messages.update(viewed=True)
+    messages = Message.objects.filter(status='new').order_by('-created_at')
+    messages.update(status='viewed')
     
     return render(request, 'view_messages.html', {'messages': messages})
+
+def new_messages_count(request):
+    if request.user.is_authenticated and request.user.is_superuser:
+        return {'new_messages_count': Message.objects.filter(status='new').count()}
+    return {'new_messages_count': 0}
 
 @login_required
 @user_passes_test(is_superuser)

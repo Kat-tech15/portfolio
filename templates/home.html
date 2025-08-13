@@ -86,7 +86,7 @@
     </div>
     <div class="card">
         <div class="card-icon">
-            <i class="fas fa-network-wired"></i> <!--Networking-->>
+        <i class="fas fa-network-wired"></i> <!--Networking-->>
         </div>
         <div class="card-content">
             <h3 class="card-header">Networking</h3>
@@ -139,7 +139,7 @@
                 {% endfor %}
             </div>
         {% endif %}
-            <form method="POST">
+            <form method="POST" action="{% url 'home' %}">
             {% csrf_token %}
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="Enter your Fullname" required>
