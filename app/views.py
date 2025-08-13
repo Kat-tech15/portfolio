@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login
 from .models import Message
 from .forms import ReplyForm
-
+from django.conf import settings
 
 def is_superuser(user):
     return user.is_superuser
@@ -21,9 +21,9 @@ def contact(request):
         message_text = request.POST.get('message')
 
         contact = Message.objects.create(
-            name=full_name,
+            full_name=full_name,
             email=email,
-            body=message_text,
+            message=message_text,
         )
         messages.success(request, 'Your message has been sent successfully!')
         return redirect('contact')
@@ -70,11 +70,10 @@ def view_message_detail(request, message_id):
             message.status = 'replied'
             message.save()
 
-            # Send email to original sender
             send_mail(
-                subject=f"Reply to your message: {message.subject if hasattr(message, 'subject') else 'No Subject'}",
+                subject=f"Reply to your message",
                 message=message.reply,
-                from_email="kelvinkatwai@gmail.com",
+                from_email=settings.DEFAULT_FROM_EMAIL,
                 recipient_list=[message.email],
             )
 
@@ -83,7 +82,7 @@ def view_message_detail(request, message_id):
     else:
         form = ReplyForm(instance=message)
 
-    return render(request, 'view_messages.html', {
+    return render(request, 'view_message_detail.html', {
         'message': message,
         'form': form
     })
