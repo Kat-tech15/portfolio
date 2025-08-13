@@ -30,12 +30,13 @@
           {% endif %}
         </td>
         <td>
-          .buttons
-          <a href="{% url 'view_message_detail' message.id %}" class="btn-view">View</a>
-          <form method="post" action="{% url 'delete_message' message.id %}" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit" class="btn-delete">Delete</button>
-          </form>
+          <div class="buttons">
+            <a href="{% url 'view_message_detail' message.id %}" class="btn-view">View</a>
+            <form method="post" action="{% url 'delete_message' message.id %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn-delete">Delete</button>
+            </form>
+          </div>
         </td>
       </tr>
       {% empty %}
@@ -104,7 +105,7 @@
 
 .btn-delete {
   background-color: #f51505;
-  padding: 5px 8px;
+  padding: 6px 8px;
   color: white;
   border-radius: 5px;
   border: none;
@@ -113,7 +114,10 @@
 .btn-delete:hover {
   background-color: #cc0909;
 }
-
+.buttons {
+  display: flex;
+  gap: 5px;
+}
 .btn-view {
   background-color: #007bff;
   padding: 5px 8px;

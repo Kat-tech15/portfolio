@@ -20,7 +20,7 @@ def contact(request):
         email = request.POST.get('email')
         message_text = request.POST.get('message')
 
-        contact = Message.objects.create(
+        Message.objects.create(
             full_name=full_name,
             email=email,
             message=message_text,
