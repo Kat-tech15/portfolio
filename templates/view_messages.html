@@ -1,5 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="table-container">
+  <h5>Messages</h5>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Index</th>
+        <th>From</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for message in messages %}
+      <tr>
+        <td>{{ forloop.counter }}</td>
+        <td>{{ message.full_name }}</td>
+        <td>{{ message.email }}</td>
+        <td>{{ message.message|truncatewords:10 }}</td>
+        <td>
+          {% if message.status == 'new' %}
+            <span class="status-new">New</span>
+          {% elif message.status == 'viewed' %}
+            <span class="status-viewed">Viewed</span>
+          {% elif message.status == 'replied' %}
+            <span class="status-replied">Replied</span>
+          {% endif %}
+        </td>
+        <td>
+          .buttons
+          <a href="{% url 'view_message_detail' message.id %}" class="btn-view">View</a>
+          <form method="post" action="{% url 'delete_message' message.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn-delete">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="6" class="text-center">No messages yet.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 <style>
 .table-container {
   max-width: 1000px;
@@ -45,18 +91,15 @@
 }
 
 .status-new {
-  color: red;
-  font-weight: bold;
+  color: #6dc1f8;
 }
 
 .status-viewed {
   color: orange;
-  font-weight: bold;
 }
 
 .status-replied {
   color: green;
-  font-weight: bold;
 }
 
 .btn-delete {
@@ -84,49 +127,4 @@
 }
 </style>
 
-<div class="table-container">
-  <h5>Messages</h5>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Index</th>
-        <th>From</th>
-        <th>Email</th>
-        <th>Message</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for message in messages %}
-      <tr>
-        <td>{{ forloop.counter }}</td>
-        <td>{{ message.name }}</td>
-        <td>{{ message.email }}</td>
-        <td>{{ message.body|truncatewords:10 }}</td>
-        <td>
-          {% if message.status == 'new' %}
-            <span class="status-new">New</span>
-          {% elif message.status == 'viewed' %}
-            <span class="status-viewed">Viewed</span>
-          {% elif message.status == 'replied' %}
-            <span class="status-replied">Replied</span>
-          {% endif %}
-        </td>
-        <td>
-          <a href="{% url 'view_message_detail' message.id %}" class="btn-view">View / Reply</a>
-          <form method="post" action="{% url 'delete_message' message.id %}" style="display:inline;">
-            {% csrf_token %}
-            <button type="submit" class="btn-delete">Delete</button>
-          </form>
-        </td>
-      </tr>
-      {% empty %}
-      <tr>
-        <td colspan="6" class="text-center">No messages yet.</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
 {% endblock %}

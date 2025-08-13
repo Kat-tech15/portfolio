@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="message-detail-container">
+  <h4>Message from {{ message.full_name }}</h4>
+  <p>Email: {{ message.email }}</p>
+  <p>Message: {{ message.message }}</p>
+  <p>Status: {{ message.get_status_display }}</p>
+
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn-submit">Send Reply</button>
+  </form>
+</div>
+
+<style>
+.message-detail-container {
+    max-width: 700px;
+    margin: 100px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.message-detail-container h4 {
+    text-align: center;
+    color: cadetblue;
+    margin-bottom: 20px;
+}
+
+.message-detail-container p {
+    font-size: 1rem;
+    margin: 10px 0;
+}
+
+.reply-form {
+    margin-top: 25px;
+}
+
+button.btn-submit {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+button.btn-submit:hover {
+    background-color: #14a1ff;
+}
+</style>
+{% endblock %}
