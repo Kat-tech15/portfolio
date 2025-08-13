@@ -86,7 +86,13 @@ def view_message_detail(request, message_id):
         'message': message,
         'form': form
     })
-
+@login_required
+@user_passes_test(is_superuser)
+def view_notification(request):
+    messages = Message.objects.filter(viewed=False).order_by('-created_at')
+    messages.update(viewed=True)
+    
+    return render(request, 'view_messages.html', {'messages': messages})
 
 @login_required
 @user_passes_test(is_superuser)
