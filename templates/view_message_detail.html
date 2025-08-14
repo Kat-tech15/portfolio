@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="message-detail-container">
-  <h4>Message from {{ message.full_name }}</h4>
+  <h3>Message from {{ message.full_name }}</h3>
   <p>Email: {{ message.email }}</p>
   <p>Message: {{ message.message }}</p>
   <p>Status: {{ message.get_status_display }}</p>
@@ -9,7 +9,7 @@
   <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn-submit">Send Reply</button>
+    <button type="submit" class="btn-submit">Reply</button>
   </form>
 </div>
 
@@ -18,21 +18,30 @@
     max-width: 700px;
     margin: 100px auto;
     padding: 30px;
-    background: #fff;
+    background: #f1f1f2;
     border-radius: 12px;
+    text-align: center;
     box-shadow: 0 3px 15px rgba(0,0,0,0.1);
     font-family: 'Segoe UI', sans-serif;
 }
-
-.message-detail-container h4 {
+.message-detail-container h3{
+    text-align: center;
+    color: #178181;
+    font-style: oblique;
+    font-size: medium;
+}
+.message-detail-container p {
     text-align: center;
     color: cadetblue;
     margin-bottom: 20px;
 }
 
-.message-detail-container p {
-    font-size: 1rem;
+.message-detail-container textarea {
     margin: 10px 0;
+    border-radius: 5px;
+    outline: none;
+    color: #3fa7aa;
+    border: 1px solid #007bff;
 }
 
 .reply-form {
@@ -40,7 +49,7 @@
 }
 
 button.btn-submit {
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 8px 16px;
     background-color: #007bff;
     color: #fff;

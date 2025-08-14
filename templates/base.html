@@ -9,6 +9,7 @@
 </head>
 <body>
     <header>
+        <img src="{% static 'images/profile.jpeg' %}" alt="Profile Picture">
         <h1>KA<span>TW</span>AI</h1>
         <nav>
             <ul class="nav-links">
@@ -49,9 +50,9 @@
                 <a href="https://www.instagram.com/katwaikelvin" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
             </div>
             <div class="footer-links">
-                <a href="#about">About</a>
-                <a href="#skills">Skills</a>
-                <a href="#contact">Contact</a>
+                <a href="{% url 'home' %}#about">About</a>
+                <a href="{% url 'home' %}#skills">Skills</a>
+                <a href="{% url 'home' %}#contact">Contact</a>
             </div>
             <p>&copy; 2025 Kelvin Katwai. All Rights Reserved.</p>
         </div>
@@ -60,7 +61,7 @@
     <script>
         window.onscroll = function () {
             const btn = document.getElementById("backToTopBtn");
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
                 btn.style.display = "block";
             } else {
                 btn.style.display = "none";
@@ -91,7 +92,15 @@
             padding: 1rem 3rem;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
-
+        img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 2px solid #f549dee1;
+            border-radius: 50%;
+            margin-top: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
         header h1 {
             font-size: 1.8rem;
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -160,7 +169,7 @@
             right: 15px;
             background: #08e91be1;
             color: #fdfdfd;
-            border: 2px solid #0bbac7;
+            border: 2px solid #ee28ee;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -223,7 +232,7 @@
         }
 
         .footer-links a:hover {
-            color: #af2cece1;
+            text-decoration: underline;
         }
     </style>
 </body>
