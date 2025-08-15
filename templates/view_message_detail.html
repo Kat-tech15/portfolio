@@ -6,12 +6,17 @@
   <p>Message: {{ message.message }}</p>
   <p>Status: {{ message.get_status_display }}</p>
 
-  <form method="POST">
+  <form id="replyForm" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn-submit">Reply</button>
+    <div class="buttons">
+        <a href="{% url 'view_messages' %}" class="btn-submit">Back</a>
+        <button type="submit" class="btn-submit">Reply</button>
+
+    </div>
   </form>
 </div>
+
 
 <style>
 .message-detail-container {
@@ -43,24 +48,34 @@
     color: #3fa7aa;
     border: 1px solid #007bff;
 }
-
+.message-detail-container label{
+    display: none;
+}
 .reply-form {
     margin-top: 25px;
 }
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
 
-button.btn-submit {
+.btn-submit {
     margin-top: 5px;
     padding: 8px 16px;
+    text-decoration: none;
     background-color: #007bff;
     color: #fff;
     border-radius: 5px;
     border: none;
     cursor: pointer;
     font-weight: bold;
+    font-size: small;
     transition: background 0.3s ease;
 }
 
-button.btn-submit:hover {
+.btn-submit:hover {
     background-color: #14a1ff;
 }
 </style>

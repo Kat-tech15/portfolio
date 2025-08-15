@@ -9,33 +9,37 @@
 </head>
 <body>
     <header>
+    <div class="logo-container">
         <img src="{% static 'images/profile.jpeg' %}" alt="Profile Picture">
         <h1>KA<span>TW</span>AI</h1>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'home' %}#about">About</a></li>
-                <li><a href="{% url 'home' %}#skills">Skills</a></li>
-                <li><a href="{% url 'home' %}#contact">Contact</a></li>
-
-                {% if user.is_superuser %}
-                    <li><a href="{% url 'admin_login' %}">Admin</a></li>
-                    <li class="notification-item">
-                        <a href="{% url 'view_messages' %}">
-                            <i class="fas fa-bell"></i>
-                            {% if new_messages_count > 0 %}
-                                <span class="notification-count">{{ new_messages_count }}</span>
-                            {% endif %}
-                        </a>
-                    </li>
-                {% endif %}
-            </ul>
-        </nav>
-    </header>
-
-    <div class="back-to-top">
-        <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
     </div>
+    <nav>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'home' %}#about">About</a></li>
+            <li><a href="{% url 'home' %}#skills">Skills</a></li>
+            <li><a href="{% url 'home' %}#contact">Contact</a></li>
+
+            {% if user.is_superuser %}
+                <li><a href="{% url 'admin_login' %}">Admin</a></li>
+                <li class="notification-item">
+                    <a href="{% url 'view_messages' %}">
+                        <i class="fas fa-bell"></i>
+                        {% if new_messages_count > 0 %}
+                            <span class="notification-count">{{ new_messages_count }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+</header>
+<div class="back-to-top">
+    <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
+</div>
 
     {% block content %}
     {% endblock %} 
@@ -70,6 +74,12 @@
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("navLinks");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
     </script>
 
     <style>
@@ -78,11 +88,17 @@
             font-family: 'Poppins', sans-serif;
             color: #333;
             line-height: 1.6;
+            background-image: url(static/images/about5.jpg);
+            background-repeat: no-repeat;
         }
 
         header {
             position: sticky;
+            height: 4vh;
             top: 0;
+            margin-left: 100px;
+            margin-right: 100px;
+            border-radius: 5px;
             z-index: 1000;
             background: rgb(75, 184, 184);
             backdrop-filter: blur(10px);
@@ -92,13 +108,24 @@
             padding: 1rem 3rem;
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
         img {
-            width: 80px;
-            height: 80px;
+            width: 50px;
+            height: 50px;
             object-fit: cover;
             border: 2px solid #f549dee1;
             border-radius: 50%;
-            margin-top: 1rem;
+            margin-top: 0;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
         header h1 {
@@ -153,7 +180,7 @@
         .notification-count {
             position: absolute;
             top: -5px;
-            right: -6px;
+            right: -7px;
             background: red;
             color: white;
             font-size: 10px;
@@ -233,6 +260,37 @@
 
         .footer-links a:hover {
             text-decoration: underline;
+        }
+        @media screen and (max-width: 768px) {
+            header {
+                flex-wrap: wrap;
+                padding: 1rem 1.5rem;
+                height: auto;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                gap: 0;
+                margin-top: 1rem;
+                background: rgba(75, 184, 184, 0.9);
+                border-radius: 5px;
+            }
+            .nav-links li {
+                padding: 0.8rem 0;
+                text-align: center;
+            }
+            .nav-links li a {
+                font-size: 1.1rem;
+            }
+            .hamburger {
+                display: block;
+                margin-left: auto;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+
         }
     </style>
 </body>
