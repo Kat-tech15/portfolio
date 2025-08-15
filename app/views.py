@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login
 from .models import Message
-from .forms import ReplyForm,MessageForm
+from .forms import ReplyForm
 from django.conf import settings
 
 def is_superuser(user):
@@ -23,13 +24,23 @@ def home(request):
                 email=email,
                 message=message_text,
             )
-            messages.success(request, 'Your message has been sent successfully!')
+            # If AJAX request, return JSON
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({'success': True, 'message': 'Your message has been sent successfully!'})
+            else:
+                messages.success(request, 'Your message has been sent successfully!')
         else:
-            messages.error(request, 'Please fill in all fields before submitting.')
-
-        return redirect('home')  # reload home page after form submission
+            if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+                return JsonResponse({'success': False, 'message': 'Please fill in all fields before submitting.'})
+            else:
+                messages.error(request, 'Please fill in all fields before submitting.')
+        
+        # Only redirect if not AJAX
+        if not request.headers.get('x-requested-with') == 'XMLHttpRequest':
+            return redirect('home')  
 
     return render(request, 'home.html')
+
 def admin_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
