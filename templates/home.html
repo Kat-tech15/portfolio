@@ -16,31 +16,60 @@
     </div>
 </section>
 <section class="about" id="about" >
+<p class="section-title">About Me</p>
 <div class="about-container">
     <div class="about-text">
-        <h3>About Me</h3>
         <p>I am a Final year student at Pwani University pursuing a bachelor's degree in Telecommunication and Information Technology.
         I am passionate about technology and I am always eager to learn new discoveries. Currently am working on perfecting my skills in backend development using Django. I posses strong skills in data  analysis using python's frameworks such as NumPy, pandas and Matplotlib.
         </p>
+        <div class="buttons">
+            <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" target="_blank" class="btn view-btn">View CV</a>
+        <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" download class="btn download-btn">Download CV</a>
         <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" class="cv-btn" download>Download CV</a><br><br>
     </div>
+        </div>
+        
 </div>
 </section>
-<section  class="skills" id="skills" >
-    <h2>Programming Skills</h2>
+<section class="skills" id="skills">
+    <p class="section-title">Programming Skills</p>
     <div class="skills-grid">
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">Vue.js</div>
-        <div class="skill">Python</div>
-        <div class="skill">SQL</div>
+        <div class="skill">
+            <i class="devicon-html5-plain colored" aria-label="HTML5"></i>
+            <p>HTML</p>
+        </div>
+        <div class="skill">
+            <i class="devicon-css3-plain colored" aria-label="CSS3"></i>
+            <p>CSS</p>
+        </div>
+        <div class="skill">
+            <i class="devicon-javascript-plain colored" aria-label="JavaScript"></i>
+            <p>JavaScript</p>
+        </div>
+        <div class="skill">
+            <i class="devicon-vuejs-plain colored" aria-label="Vue.js"></i>
+            <p>Vue.js</p>
+        </div>
+        <div class="skill">
+            <i class="devicon-react-original colored" aria-label="React"></i>
+            <p>React</p>
+        </div>
+        <div class="skill">
+            <i class="devicon-python-plain colored" aria-label="Python"></i>
+            <p>Python</p>
+        </div>
+        <div class="skill">
+            <i class="devicon-mysql-plain colored" aria-label="SQL"></i>
+            <p>SQL</p>
+        </div>
     </div>
 </section>
+
 <section class="skills-section">
+    <p class="section-title">Technical Skills</p>
     <div class="card">
         <div class="card-icon">
-            <i class="fas fa-laptop-code"></i> <!-- Font Awesome Icon for programming -->
+            <i class="fas fa-laptop-code"></i> 
         </div>
         <div class="card-content">
             <h3 class="card-header">Programming</h3>
@@ -116,9 +145,88 @@
         </div>
     </div>
 </section>
+<section id="certifications" class="certifications">
+  
+  <div class="cert-item">
+    <h4>AWS Cloud Practitioner Graduate</h4>
+    <img src="static/images/aws_badge.png" alt="AWS Badge" class="cert-img">
+    <p>Amazon Web Services – 2025</p>
+    <div class="cert-actions">
+      <a href="certificates/aws-certificate.pdf" target="_blank" class="btn view-btn">View Certificate</a>
+      <a href="certificates/aws-certificate.pdf" download class="btn download-btn">Download</a>
+    </div>
+  </div>
+
+  <div class="cert-item">
+    <h4>Data Analysis Certification</h4>
+    <img src="static/images/data.jpg" alt="Data Analysis Badge" class="cert-img">
+    <p>Martial School of IT – 2025</p>
+    <div class="cert-actions">
+      <a href="static/docs/data_analytics.pdf" target="_blank" class="btn view-btn">View Certificate</a>
+      <a href="static/docs/data_analytics.pdf" download class="btn download-btn">Download</a>
+    </div>
+  </div>
+
+  <div class="cert-item">
+    <h4>Attachment Recommendation</h4>
+    <img src="static/images/heroBg2.jpg" alt="Attachment Badge" class="cert-img">
+    <p>Swahilipot Hub Foundation – 2025</p>
+    <div class="cert-actions">
+      <a href="certificates/attachment-recommendation.pdf" target="_blank" class="btn view-btn">View Recommendation</a>
+      <a href="certificates/attachment-recommendation.pdf" download class="btn download-btn">Download</a>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="projects" class="projects">
+    <p class="section-title">Projects</p>
+    
+    <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-item">
+            <img src="static/images/portofolio.png" alt="Portfolio Website Screenshot">
+            <h4>Portfolio Website</h4>
+            <p>A personal portfolio showcasing skills, certifications, and projects. Built with HTML, CSS, and JavaScript.</p>
+            <a href="#" class="project-link">View Project</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-item">
+            <img src="static/images/data.jpg" alt="Data Analysis Report Screenshot">
+            <h4>Data Analysis Report</h4>
+            <p>Exploratory Data Analysis (EDA) with visualizations for datasets using Python and Matplotlib.</p>
+            <a href="#" class="project-link">View Report</a>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-item">
+            <img src="static/images/heroBg2.jpg" alt="Attachment Management System Screenshot">
+            <h4>Attachment Management System</h4>
+            <p>Django-based system for tracking attachees, housing rentals, and company offers.</p>
+            <a href="#" class="project-link">Explore System</a>
+        </div>
+    </div>
+</section>
+
+
+<section id="experience" class="experience">
+        <p class="section-title">Work & Experience</p>
+        <div class="experience-item">
+            <h4>Attachee — Swahilipot Hub Foundation</h4>
+            <p>May 2025 – Aug 2025</p>
+            <ul>
+                <li>Worked on web-based projects using Django and JavaScript.</li>
+                <li>Participated in a team environment and collaborated with developers and designers.</li>
+                <li>Gained practical experience in software development and cloud basics.</li>
+            </ul>
+        </div>
+</section>
+
 <section class="contact" id="contact" >
     <div class="contact-container">
-    <h3>Contact Me</h3>
+    <p class="section-title">Contact Me</p>
     <p>Feel free to reach for collaborations, job opportunities or any enquiries</p>
             <div id="contact-message"></div>
 
@@ -180,7 +288,7 @@ contactForm.addEventListener('submit', function(event) {
     align-items: center;
     justify-content: center;
     padding: 4rem 8%;
-    background-image: url(static/images/pic5.jpg);
+    background-image: url(static/images/pic7.jpg);
     background-position: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -248,7 +356,41 @@ contactForm.addEventListener('submit', function(event) {
     position: relative;
     clip-path: ellipse(100% 100% at 50% 100%);
 }
+section {
+    padding: 60px 20px;
+    text-align: center; /* centers text inside the section */
+}
 
+/* Style all section titles */
+section h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* change to your theme color */
+    position: relative;
+}
+
+/* Optional: Add a nice underline effect for titles */
+section h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #007BFF; /* your accent color */
+    margin: 10px auto 0; /* centers the underline */
+    border-radius: 2px;
+}
+.section-title {
+    display: inline-block;
+    margin: 0 auto 20px;
+    padding: 5px 15px;
+    border: 2px solid #f83a3a;
+    border-radius: 8px;
+    font-size: 24px;
+    color: #247174;
+    font-weight: bold;
+}
 .about-container {
     display: flex;
     flex-wrap: wrap;
@@ -260,21 +402,18 @@ contactForm.addEventListener('submit', function(event) {
     flex: 1 1 50%;
 }
 
-.about-text h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: aqua;
-    font-style: oblique;
-}
-
 .about-text p {
     font-size: 1.1rem;
-    color: #475569;
+    color: cadetblue;
     line-height: 1.6;
     margin-bottom: 1.5rem;
     letter-spacing: normal;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.buttons {
+    justify-content: center;
+    display: flex;
+    gap: 10px;
 }
 
 .cv-btn {
@@ -301,50 +440,31 @@ contactForm.addEventListener('submit', function(event) {
     background: url("data:image/svg+xml,%3Csvg viewBox='0 0 1440 150' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23f8fafc' d='M0,0L80,10C160,20,320,40,480,50C640,60,800,60,960,50C1120,40,1280,20,1360,10L1440,0V150H0Z'/%3E%3C/svg%3E") no-repeat;
     background-size: cover;
 }
-.skills {
-    padding: 50px;
-    color: #374cc4;
-    text-align: center;
-    background: url(static/images/about6.jpg);
-  
-}
-
-.skills h2 {
-    color: #25ee57;
-}
-
 .skills-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
-    gap: 50px;
-    overflow: auto;
-    padding: 10px;
-}
-
-.skill {
-    background-color: rgb(51, 179, 79);
-    padding: 20px 25px;
-    border-radius: 10px;
-    font-size: 1rem;
-    color: white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 20px;
     text-align: center;
-    flex: 20px 20px 20px;
-    white-space: nowrap;
-    transition: transform 0.3s ease;
 }
 
-.skill:hover {
-    transform: scale(1.1)
+.skill i {
+    font-size: 3rem;
+    margin-bottom: 8px;
 }
+
+.skill p {
+    font-weight: 600;
+    margin: 0;
+}
+
 
 .skills-section {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     gap: 20px;
-    padding: 40px;
-    background-image: url(static/images/about2.jpg);
+    padding: 30px;
+    background-image: url(static/images/about5.jpg);
     background-size: cover;
     text-align: center;
     background-repeat: no-repeat;
@@ -352,8 +472,8 @@ contactForm.addEventListener('submit', function(event) {
 
 .card {
     background-color: white;
-    border-radius: 10px;
-    width: 280px;
+    border-radius: 8px;
+    width: 300px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
@@ -373,14 +493,156 @@ contactForm.addEventListener('submit', function(event) {
 
 .card-header {
     font-size: 24px;
-    color: #12db6c;
+    color: #047074;
     margin-bottom: 10px;
 }
 
 .card-description {
     font-size: 17px;
-    color: #666;
+    color: cadetblue;
     line-height: 1.5;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.section {
+    padding: 50px 0;
+    background: #f9f9f9;
+}
+.certifications {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.cert-item {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.cert-img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+}
+
+.cert-actions {
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 30px;
+    text-decoration: none;
+    text-align: center;
+    margin-right: 8px;
+}
+
+.view-btn {
+    background: #0073e6;
+    color: white;
+}
+
+.download-btn {
+    background: #28a745;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}.projects {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.project-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-item:hover {
+    transform: translateY(-5px);
+}
+
+.project-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.project-item h4 {
+    margin: 10px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.project-item p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.project-link {
+    display: inline-block;
+    padding: 8px 15px;
+    background: #0077cc;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.project-link:hover {
+    background: #005fa3;
+}
+.experience {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+    background-image: url(static/images/about3.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.experience h3 {
+    color: aqua;
+    font-size: 2rem;
+    font-style: oblique;
+}
+.experience-item {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.experience-item h4 {
+    color: rgb(29, 116, 119);
+    font-style: oblique;
+}
+.experience-item p {
+    color: #0f4244;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.experience-item ul li {
+    list-style: none;
+    color: cadetblue;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .contact{
     background-image: url(static/images/about5.jpg);
@@ -408,8 +670,13 @@ contactForm.addEventListener('submit', function(event) {
 .error {
     background-color: #f44336;
 }
+.contact {
+    background: none;
+}
 .contact-container {
     margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
     padding: 20px 15px;
     border-radius: 10px;
     width: 100%;
@@ -418,12 +685,9 @@ contactForm.addEventListener('submit', function(event) {
     background-color: white;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-.contact-container p {
-    font-style: oblique;
-    color: cadetblue;
-}
 .contact-container h3 {
     color: aqua;
+    font-size: 2rem;
     font-family: sans-serif;
     font-style: oblique;
 }
