@@ -24,11 +24,9 @@
         </p>
         <div class="buttons">
             <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" target="_blank" class="btn view-btn">View CV</a>
-        <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" download class="btn download-btn">Download CV</a>
-        <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" class="cv-btn" download>Download CV</a><br><br>
-    </div>
+            <a href="{% static 'docs/Kelvin_Katwai_Mutua_CV.pdf' %}" download class="btn download-btn">Download CV</a>
         </div>
-        
+    </div>   
 </div>
 </section>
 <section class="skills" id="skills">
@@ -66,7 +64,6 @@
 </section>
 
 <section class="skills-section">
-    <p class="section-title">Technical Skills</p>
     <div class="card">
         <div class="card-icon">
             <i class="fas fa-laptop-code"></i> 
@@ -80,7 +77,7 @@
     </div>
     <div class="card">
         <div class="card-icon">
-            <i class="fas fa-cloud"></i> <!-- Font Awesome Icon for cloud computing -->
+            <i class="fas fa-cloud"></i> 
         </div>
         <div class="card-content">
             <h3 class="card-header">Cloud Computing</h3>
@@ -91,7 +88,7 @@
     </div>
     <div class="card">
         <div class="card-icon">
-            <i class="fas fa-robot"></i> <!-- Font Awesome Icon for AI -->
+            <i class="fas fa-robot"></i> 
         </div>
         <div class="card-content">
             <h3 class="card-header">Artificial Intelligence</h3>
@@ -102,7 +99,7 @@
     </div>
     <div class="card">
         <div class="card-icon">
-            <i class="fas fa-database"></i> <!-- Font Awesome Icon for database -->
+            <i class="fas fa-database"></i> 
         </div>
         <div class="card-content">
             <h3 class="card-header">Database Management</h3>
@@ -113,7 +110,7 @@
     </div>
     <div class="card">
         <div class="card-icon">
-        <i class="fas fa-network-wired"></i> <!--Networking-->>
+        <i class="fas fa-network-wired"></i> 
         </div>
         <div class="card-content">
             <h3 class="card-header">Networking</h3>
@@ -124,7 +121,7 @@
     </div>
     <div class="card">
         <div class="card-icon">
-            <i class="fas fa-chart-line"></i> <!-- Data Analytics -->
+            <i class="fas fa-chart-line"></i> 
         </div>
         <div class="card-content">
             <h3 class="card-header">Data Analytics</h3>
@@ -135,7 +132,7 @@
     </div>
     <div class="card">
         <div class="card-icon">
-            <i class="fas fa-brain"></i> <!-- Data Science -->
+            <i class="fas fa-brain"></i> 
         </div>
         <div class="card-content">
             <h3 class="card-header">Data Science</h3>
@@ -152,8 +149,8 @@
     <img src="static/images/aws_badge.png" alt="AWS Badge" class="cert-img">
     <p>Amazon Web Services – 2025</p>
     <div class="cert-actions">
-      <a href="certificates/aws-certificate.pdf" target="_blank" class="btn view-btn">View Certificate</a>
-      <a href="certificates/aws-certificate.pdf" download class="btn download-btn">Download</a>
+      <a href="static/docs/aws_certificate.pdf" target="_blank" class="btn view-btn">View Certificate</a>
+      <a href="static/docs/aws_certificate.pdf" download class="btn download-btn">Download</a>
     </div>
   </div>
 
@@ -172,8 +169,8 @@
     <img src="static/images/heroBg2.jpg" alt="Attachment Badge" class="cert-img">
     <p>Swahilipot Hub Foundation – 2025</p>
     <div class="cert-actions">
-      <a href="certificates/attachment-recommendation.pdf" target="_blank" class="btn view-btn">View Recommendation</a>
-      <a href="certificates/attachment-recommendation.pdf" download class="btn download-btn">Download</a>
+      <a href="static/docs/attachment_recommendation.pdf" target="_blank" class="btn view-btn">View Recommendation</a>
+      <a href="static/docs/attachment_recommendation.pdf" download class="btn download-btn">Download</a>
     </div>
   </div>
 </section>
@@ -184,28 +181,25 @@
     <p class="section-title">Projects</p>
     
     <div class="projects-grid">
-        <!-- Project 1 -->
         <div class="project-item">
             <img src="static/images/portofolio.png" alt="Portfolio Website Screenshot">
             <h4>Portfolio Website</h4>
             <p>A personal portfolio showcasing skills, certifications, and projects. Built with HTML, CSS, and JavaScript.</p>
-            <a href="#" class="project-link">View Project</a>
+            <a href="https://github.com/Kat-tech15/portfolio" class="project-link">View Project</a>
         </div>
 
-        <!-- Project 2 -->
         <div class="project-item">
             <img src="static/images/data.jpg" alt="Data Analysis Report Screenshot">
             <h4>Data Analysis Report</h4>
             <p>Exploratory Data Analysis (EDA) with visualizations for datasets using Python and Matplotlib.</p>
-            <a href="#" class="project-link">View Report</a>
+            <a href="https://github.com/Kat-tech15/SQL" class="project-link">View Report</a>
         </div>
 
-        <!-- Project 3 -->
         <div class="project-item">
             <img src="static/images/heroBg2.jpg" alt="Attachment Management System Screenshot">
             <h4>Attachment Management System</h4>
             <p>Django-based system for tracking attachees, housing rentals, and company offers.</p>
-            <a href="#" class="project-link">Explore System</a>
+            <a href="https://github.com/Kat-tech15/attachment-website" class="project-link">Explore System</a>
         </div>
     </div>
 </section>
@@ -289,13 +283,27 @@ contactForm.addEventListener('submit', function(event) {
     justify-content: center;
     padding: 4rem 8%;
     background-image: url(static/images/pic7.jpg);
-    background-position: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position: center;
     color: #fff;
     text-align: center;
+    position: relative;
+    overflow: hidden;
 }
-
+.home::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+}
+.home * {
+    position: relative;
+    z-index: 2;
+}
 .hero-content {
     max-width: 800px;
     animation: fadeInUp 1s ease-in-out;
@@ -358,29 +366,18 @@ contactForm.addEventListener('submit', function(event) {
 }
 section {
     padding: 60px 20px;
-    text-align: center; /* centers text inside the section */
+    text-align: center; 
 }
 
-/* Style all section titles */
 section h2 {
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
     margin-bottom: 20px;
-    color: #333; /* change to your theme color */
+    color: #333; 
     position: relative;
 }
 
-/* Optional: Add a nice underline effect for titles */
-section h2::after {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 3px;
-    background: #007BFF; /* your accent color */
-    margin: 10px auto 0; /* centers the underline */
-    border-radius: 2px;
-}
 .section-title {
     display: inline-block;
     margin: 0 auto 20px;
@@ -448,13 +445,14 @@ section h2::after {
 }
 
 .skill i {
-    font-size: 3rem;
+    font-size: 5rem;
     margin-bottom: 8px;
 }
 
 .skill p {
     font-weight: 600;
     margin: 0;
+    color: cadetblue;
 }
 
 
@@ -464,7 +462,6 @@ section h2::after {
     flex-wrap: wrap;
     gap: 20px;
     padding: 30px;
-    background-image: url(static/images/about5.jpg);
     background-size: cover;
     text-align: center;
     background-repeat: no-repeat;
@@ -526,7 +523,6 @@ section h2::after {
   width: 100%;
   height: auto;
   margin-bottom: 10px;
-}
 }
 
 .cert-actions {
@@ -617,7 +613,6 @@ section h2::after {
     flex-direction: column;
     padding: 40px;
     text-align: center;
-    background-image: url(static/images/about3.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -645,7 +640,6 @@ section h2::after {
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .contact{
-    background-image: url(static/images/about5.jpg);
     background-position: fixed;
     background-size: cover;
     background-repeat: no-repeat;
