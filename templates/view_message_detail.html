@@ -1,23 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="message-detail-container">
-  <h3>Message from {{ message.full_name }}</h3>
-  <p>Email: {{ message.email }}</p>
-  <p>Message: {{ message.message }}</p>
-  <p>Status: {{ message.get_status_display }}</p>
+    <h3>Message from {{ message.full_name }}</h3>
+    <p>Email: {{ message.email }}</p>
+    <p>Message: {{ message.message }}</p>
+    <p>Status: {{ message.get_status_display }}</p>
 
-  <form id="replyForm" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div class="buttons">
-        <a href="{% url 'view_messages' %}" class="btn-submit">Back</a>
-        <button type="submit" class="btn-submit">Reply</button>
-
-    </div>
-  </form>
+    <form id="replyForm" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="buttons">
+            <a href="{% url 'view_messages' %}" class="btn-submit">Back</a>
+            <button type="submit" class="btn-submit">Reply</button>
+        </div>
+    </form>
 </div>
-
-
 <style>
 .message-detail-container {
     max-width: 700px;

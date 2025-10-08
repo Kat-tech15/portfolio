@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %} Home {% endblock %}
+{% block title %} Portfolio | Home {% endblock %}
 
 {% load static %}
 
@@ -179,7 +179,6 @@
 
 <section id="projects" class="projects">
     <p class="section-title">Projects</p>
-    
     <div class="projects-grid">
         <div class="project-item">
             <img src="static/images/portofolio.png" alt="Portfolio Website Screenshot">
@@ -187,14 +186,12 @@
             <p>A personal portfolio showcasing skills, certifications, and projects. Built with HTML, CSS, and JavaScript.</p>
             <a href="https://github.com/Kat-tech15/portfolio" class="project-link">View Project</a>
         </div>
-
         <div class="project-item">
             <img src="static/images/data.jpg" alt="Data Analysis Report Screenshot">
             <h4>Data Analysis Report</h4>
             <p>Exploratory Data Analysis (EDA) with visualizations for datasets using Python and Matplotlib.</p>
             <a href="https://github.com/Kat-tech15/SQL" class="project-link">View Report</a>
         </div>
-
         <div class="project-item">
             <img src="static/images/heroBg2.jpg" alt="Attachment Management System Screenshot">
             <h4>Attachment Management System</h4>
@@ -203,8 +200,6 @@
         </div>
     </div>
 </section>
-
-
 <section id="experience" class="experience">
         <p class="section-title">Work & Experience</p>
         <div class="experience-item">
@@ -217,27 +212,26 @@
             </ul>
         </div>
 </section>
-
 <section class="contact" id="contact" >
     <div class="contact-container">
-    <p class="section-title">Contact Me</p>
-    <p>Feel free to reach for collaborations, job opportunities or any enquiries</p>
-            <div id="contact-message"></div>
-
-            <form id="contactForm" method="POST" action="{% url 'home' %}">
-            {% csrf_token %}
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your Fullname" required>
-            
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Enter your Email" required> 
-            
-                <label for="message">Message</label>
-                <textarea name="message" id="message" rows="3" placeholder="Enter Message here..."></textarea>
-            
-            <button type="submit">Submit</button>
-        </form>
-</div>
+        <p class="section-title">Contact Me</p>
+        <p>Feel free to reach for collaborations, job opportunities or any enquiries</p>
+            <div id="contact-message">
+                <form id="contactForm" method="POST" action="{% url 'home' %}">
+                {% csrf_token %}
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your Fullname" required>
+                
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your Email" required> 
+                
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" rows="3" placeholder="Enter Message here..."></textarea>
+                
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+    </div>
 </section>
 <script>
 const contactForm = document.getElementById('contactForm');
@@ -454,8 +448,6 @@ section h2 {
     margin: 0;
     color: cadetblue;
 }
-
-
 .skills-section {
     display: flex;
     justify-content: space-around;

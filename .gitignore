@@ -2,4 +2,5 @@ db.sqlite3
 __pycache__
 .env
 myenv
-static/docs
+staticfiles
+static
