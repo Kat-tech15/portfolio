@@ -10,45 +10,43 @@
 </head>
 <body>
     <header>
-        <div classs="container">
-            <div class="logo-container">
-                <img src="{% static 'images/profile.jpeg' %}" alt="Profile Picture">
-                <h1>KA<span>TW</span>AI</h1>
-            </div>
-            <nav>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'home' %}#about">About</a></li>
-                    <li><a href="{% url 'home' %}#skills">Skills</a></li>
-                    <li class="drop-content">
-                        <a href="javascript:void(0)" class="dropdown-btn" onclick="toggleDropdown()">
-                            Achievements <span id="arrow">▼</span>
-                        </a>
-                        <ul id="dropdown-menu" class="dropdown-content">
-                            <li><a href="{% url 'home'%}#certifications">Certifications</a></li>
-                            <li><a href="{% url 'home'%}#projects">Projects</a></li>
-                            <li><a href="{% url 'home'%}#experience">Experience</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{% url 'home' %}#contact">Contact</a></li>
-
-                    {% if user.is_superuser %}
-                        <li><a href="{% url 'admin_login' %}">Admin</a></li>
-                        <li class="notification-item">
-                            <a href="{% url 'view_messages' %}">
-                                <i class="fas fa-bell"></i>
-                                {% if new_messages_count > 0 %}
-                                    <span class="notification-count">{{ new_messages_count }}</span>
-                                {% endif %}
-                            </a>
-                        </li>
-                    {% endif %}
+    <div class="logo-container">
+        <img src="{% static 'images/profile.jpeg' %}" alt="Profile Picture">
+        <h1>KA<span>TW</span>AI</h1>
+    </div>
+    <nav>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'home' %}#about">About</a></li>
+            <li><a href="{% url 'home' %}#skills">Skills</a></li>
+            <li class="drop-content">
+                <a href="javascript:void(0)" class="dropdown-btn" onclick="toggleDropdown()">
+                    Achievements <span id="arrow">▼</span>
+                </a>
+                <ul id="dropdown-menu" class="dropdown-content">
+                    <li><a href="{% url 'home'%}#certifications">Certifications</a></li>
+                    <li><a href="{% url 'home'%}#projects">Projects</a></li>
+                    <li><a href="{% url 'home'%}#experience">Experience</a></li>
                 </ul>
-                <div class="hamburger" id="hamburger">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+            </li>
+            <li><a href="{% url 'home' %}#contact">Contact</a></li>
+
+            {% if user.is_superuser %}
+                <li><a href="{% url 'admin_login' %}">Admin</a></li>
+                <li class="notification-item">
+                    <a href="{% url 'view_messages' %}">
+                        <i class="fas fa-bell"></i>
+                        {% if new_messages_count > 0 %}
+                            <span class="notification-count">{{ new_messages_count }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
         </div>
+    </nav>
 </header>
 <div class="back-to-top">
     <button id="backToTopBtn" onclick="scrollToTop()">↑</button>
@@ -131,13 +129,7 @@
             background-size: cover;
             background-position: center;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            padding: 0 1rem;
-            
-        }
+
         header {
             position: sticky;
             max-height: 60px;
