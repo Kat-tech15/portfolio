@@ -36,7 +36,6 @@ def home(request):
             else:
                 messages.error(request, 'Please fill in all fields before submitting.')
         
-        # Only redirect if not AJAX
         if not request.headers.get('x-requested-with') == 'XMLHttpRequest':
             return redirect('home')  
 
@@ -58,64 +57,46 @@ def admin_login(request):
     return render(request, 'admin_login.html')
 
 
-@login_required
 @user_passes_test(is_superuser)
 def view_messages(request):
-    messages = Message.objects.all().order_by('-id')
-    return render(request, 'view_messages.html', {'messages': messages})
+    msg_list = Message.objects.all().order_by('-created_at')
+    return render(request, 'view_messages.html', {'contact_list': msg_list})
 
-
-@login_required
 @user_passes_test(is_superuser)
-def view_message_detail(request, message_id):
-    message = get_object_or_404(Message, id=message_id)
+def reply_message(request, message_id):
+    msg = get_object_or_404(Message, id=message_id)
 
-    if message.status == 'new':
-        message.status = 'viewed'
-        message.save()
+    if not msg.is_read:
+        msg.is_read = True
+        msg.save()
 
-    if request.method == 'POST':
-        form = ReplyForm(request.POST, instance=message)
-        if form.is_valid():
-            message = form.save(commit=False)
-            message.status = 'replied'
-            message.save()
+    if request.method == "POST":
+        response = request.POST.get('response')
+        msg.response = response
+        msg.status = "replied"
+        msg.save()
 
-            send_mail(
-                subject=f"Reply to your message",
-                message=message.reply,
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[message.email],
-            )
-
-            messages.success(request, 'Reply sent successfully!')
-            return redirect('view_messages')
-    else:
-        form = ReplyForm(instance=message)
-
-    return render(request, 'view_message_detail.html', {
-        'message': message,
-        'form': form
-    })
-
-@login_required
-@user_passes_test(is_superuser)
-def view_notification(request):
-    messages = Message.objects.filter(status='new').order_by('-created_at')
-    messages.update(status='viewed')
+        send_mail(
+            subject="Reply to your message",
+            message=response,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[msg.email],
+        )
+        messages.success(request, "Reply sent successfully!")
+        return redirect("view_messages")
     
-    return render(request, 'view_messages.html', {'messages': messages})
+    return render(request, "reply_message.html", {'message': msg})
 
 def new_messages_count(request):
     if request.user.is_authenticated and request.user.is_superuser:
         return {'new_messages_count': Message.objects.filter(status='new').count()}
     return {'new_messages_count': 0}
 
-@login_required
+
 @user_passes_test(is_superuser)
 def delete_message(request, message_id):
-    message = get_object_or_404(Message, id=message_id)
-    message.delete()
+    msg = get_object_or_404(Message, id=message_id)
+    msg.delete()
     messages.success(request, 'Message deleted successfully!')
     return redirect('view_messages')
 

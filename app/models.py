@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class Message(models.Model):
-    full_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     email = models.EmailField()
     message = models.TextField()
 
@@ -14,7 +14,8 @@ class Message(models.Model):
         ('replied', 'Replied'),
     ]
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='new')
-    reply = models.TextField(blank=True, null=True)
+    response = models.TextField(blank=True, null=True)
+    is_read = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
