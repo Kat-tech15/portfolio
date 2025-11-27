@@ -3,8 +3,9 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, get_user_model
 from .models import Message
+from django.http import HttpResponse
 from .forms import ReplyForm
 from django.conf import settings
 
@@ -117,3 +118,14 @@ def delete_message(request, message_id):
     message.delete()
     messages.success(request, 'Message deleted successfully!')
     return redirect('view_messages')
+
+def create_superuser(request):
+    User = get_user_model()
+    username =  'admin'
+    email = 'kelvinkatwai@gmail.com'
+    password = 'cekret'
+
+    if not User.objects.filter(username=username).exists():
+        User.objects.create_superuser(username=username, email=email, password=password)
+        return HttpResponse("Superuser created successfully!")
+    return HttpResponse("Superuser already exists!")
