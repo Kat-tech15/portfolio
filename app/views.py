@@ -15,13 +15,13 @@ def is_superuser(user):
 
 def home(request):
     if request.method == 'POST':
-        full_name = request.POST.get('name')
+        name = request.POST.get('name')
         email = request.POST.get('email')
         message_text = request.POST.get('message')
 
-        if full_name and email and message_text:
+        if name and email and message_text:
             Message.objects.create(
-                full_name=full_name,
+                name=name,
                 email=email,
                 message=message_text,
             )
