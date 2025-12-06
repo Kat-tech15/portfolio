@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth import authenticate, login, get_user_model
 from .models import Message
+from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
 from .forms import ReplyForm
 from django.conf import settings
@@ -62,31 +63,46 @@ def view_messages(request):
     msg_list = Message.objects.all().order_by('-created_at')
     return render(request, 'view_messages.html', {'contact_list': msg_list})
 
-@user_passes_test(is_superuser)
+@user_passes_test(lambda u: u.is_superuser)
 def reply_message(request, message_id):
     msg = get_object_or_404(Message, id=message_id)
 
+    # Mark as read
     if not msg.is_read:
         msg.is_read = True
         msg.save()
 
     if request.method == "POST":
-        response = request.POST.get('response')
+        response = request.POST.get('response', '').strip()
+
+        if not response:
+            messages.error(request, "Response cannot be empty.")
+            return render(request, "reply_message.html", {'message': msg})
+
         msg.response = response
         msg.status = "replied"
         msg.save()
 
-        send_mail(
-            subject="Reply to your message",
-            message=response,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[msg.email],
-        )
-        messages.success(request, "Reply sent successfully!")
-        return redirect("view_messages")
-    
-    return render(request, "reply_message.html", {'message': msg})
+        try:
+            if msg.email:  
+                send_mail(
+                    subject="Reply to your message",
+                    message=response,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[msg.email],
+                    fail_silently=False
+                )
+                messages.success(request, "Reply sent successfully!")
+            else:
+                messages.error(request, "Recipient email is invalid.")
+        except BadHeaderError:
+            messages.error(request, "Invalid header found in email.")
+        except Exception as e:
+            messages.error(request, f"Error sending email: {e}")
 
+        return redirect("view_messages")
+
+    return render(request, "reply_message.html", {'message': msg})
 def new_messages_count(request):
     if request.user.is_authenticated and request.user.is_superuser:
         return {'new_messages_count': Message.objects.filter(status='new').count()}
